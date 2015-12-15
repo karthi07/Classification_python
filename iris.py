@@ -19,7 +19,29 @@ min_non_setosa = plength[~is_setosa].min()
 print 'Max Setosa : ',max_setosa
 print 'Min Non Setosa : ',min_non_setosa
 
-if features[:,2] < 2:
- print "Iris setosa"
-else :
- print "Virginica or Versicolour"
+#if features[:,2] < 2:
+# print "Iris setosa"
+#else :
+# print "Virginica or Versicolour"
+
+#classify virginica and versicolour
+
+features = features[~is_setosa]
+labels = labels[~is_setosa]
+virginica = (labels=='Virginica')
+
+best_acc = -1.0
+for fi in xrange(features.shape[1]):
+  thresh = features[:,fi]
+  thresh.sort()
+  for t in thresh:
+    pred = (features[:,fi]>t)
+    acc = (pred == virginica).mean()
+    if acc > best_acc:
+      best_acc = acc
+      best_fi = fi
+      best_t = t
+
+
+print best_t,best_fi,best_acc
+      
