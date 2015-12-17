@@ -28,11 +28,11 @@ print 'Min Non Setosa : ',min_non_setosa
 
 features = features[~is_setosa]
 labels = labels[~is_setosa]
-virginica = (labels=='Virginica')
+virginica = (labels=='virginica')
 
 best_acc = -1.0
 for fi in xrange(features.shape[1]):
-  thresh = features[:,fi]
+  thresh = features[:,fi].copy()
   thresh.sort()
   for t in thresh:
     pred = (features[:,fi]>t)

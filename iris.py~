@@ -32,10 +32,10 @@ virginica = (labels=='Virginica')
 
 best_acc = -1.0
 for fi in xrange(features.shape[1]):
-  thresh = features[:,fi]
+  thresh = features[:,fi].copy()
   thresh.sort()
   for t in thresh:
-    pred = (features[:fi]>t)
+    pred = (features[:,fi]>t)
     acc = (pred == virginica).mean()
     if acc > best_acc:
       best_acc = acc
