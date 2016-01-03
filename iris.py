@@ -44,4 +44,6 @@ for fi in xrange(features.shape[1]):
 
 
 print best_t,best_fi,best_acc
-      
+ 
+
+
